@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<link rel="stylesheet" th:href="@{/myCss.css}">
+<body>
+
+<div th:fragment="commonnav" >
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+        <a class="navbar-brand" href="#">
+            <marquee behavior="" direction="right-left">site</marquee></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse right" id="navbarNavDropdown"  sec:authorize="isAuthenticated()">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/}">Home</a>
+                </li>
+                <div>
+                    <li sec:authorize="hasAuthority('ADMIN')" class="nav-item dropdown" >
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            formulaire
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" th:href="@{/categorie/form}">matieres</a>
+                            <a class="dropdown-item" th:href="@{/produit/form}">produit</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                </div>
+
+                <div >
+                    <li sec:authorize="hasAuthority('ADMIN')" class="nav-item dropdown" >
+                        <a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            articles
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"  >
+                            <a class="dropdown-item" th:href="@{/categorie/list}">categorie</a>
+                            <a class="dropdown-item" th:href="@{/produit/list}">produits</a>
+                        </div>
+                    </li>
+                </div>
+                <div>
+                    <li sec:authorize="hasAuthority('ADMIN')" class="nav-item dropdown" >
+                        <a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            5eme
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" th:href="@{/user/form}">user</a>
+                            <a class="dropdown-item" th:href="@{/role/form}">role</a>
+                        </div>
+                    </li>
+                </div>
+
+
+                <ul class="pull">
+                    <li class="nav-item dropdown">
+                        <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">
+                            <span class="profile-ava">
+                                <img alt="" src="img/avatar1_small.jpg">
+                            </span>
+                            <span sec:authentication="name"></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href=""><i class="icon_profile"></i> My Profile</a>
+                            <a class="dropdown-item" href="login.html"><i class="icon_key_alt"></i> Log Out</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+    </nav>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>e-com</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css}"/>
+    <link th:rel="stylesheet" th:href="@{/myCss.css}">
+</head>
+<body style="background-color:#ccccb3">
+<div th:replace="common::commonnav"></div>
+
+<p></p>
+
+<div class="container">
+    <div class="dis">
+        <spam th:each="p: ${searchList}">
+            <a th:href="@{'/prodtById/' +${p.id}}" class="text-dark">   <img alt="" th:src="*{'data:photo/jpeg;base64,'+{p.photo}}" class="grid-item">
+            <p class="text-center">
+              [[${p.nom}]]
+            </p>
+            </a>
+        </spam>
+
+</div>
+</div>
+
+
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<!--<script  type="text/javascript" th:src="@{/salle.js}"></script>-->
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+</body>
+</html>

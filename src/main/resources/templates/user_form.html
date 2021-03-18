@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>e-com</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css}"/>
+    <link th:rel="stylesheet" th:href="@{/myCss.css}">
+</head>
+<body  style="background-color:#ccccb3">
+<div th:replace="common::commonnav"></div>
+
+<div class="row m-2">
+    <div class="col-lg-4">
+        <h2>partie de gauche pour autre chose</h2>
+    </div>
+    <div class="col-lg-4">
+
+        <div th:if="${user.id==null}"><h1>ajouter un role</h1></div>
+        <div th:unless="${user.id==null}"><h1>modifier un role</h1></div>
+        <hr>
+        <form th:action="@{/user/save}" th:object="${user}" method="post">
+            <input type="hidden" th:field="*{id}" th:value="${user.id}"/>
+            <div>
+                <div class="form-group">
+                    <label class="control-label">username</label>
+                    <input  class="form-control" type="text" th:field="*{username}" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">password</label>
+                    <input  class="form-control" type="password" th:field="*{password}">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">affecter le(s) role(s)</label>
+                    <select th:field="*{roles}" class="form-control" multiple required>
+                        <th:block th:each="r: ${roleList}">
+                            <option th:text="${r.nom}" th:value="${r.id}"></option>
+                        </th:block>
+
+                    </select>
+                </div>
+            </div>
+            <div class="text-center">
+            <input type="submit" value="valider" class="btn-success">
+
+            </div>
+        </form>
+
+    </div>
+    <div class="col-lg-4">
+        <h2>partie de droite  pour autre chose</h2>
+    </div>
+
+
+</div>
+
+
+
+
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<!--<script  type="text/javascript" th:src="@{/salle.js}"></script>-->
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+</body>
+</html>

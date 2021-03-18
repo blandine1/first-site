@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>e-com</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css}"/>
+    <link th:rel="stylesheet" th:href="@{/myCss.css}">
+</head>
+<body style="background-color:#ccccb3">
+<div th:replace="common::commonnav"></div>
+<p></p>
+<div class="text-center">
+    <h3>liste de produits</h3>
+</div>
+
+<div class="container">
+    <a class="btn btn-info nob" th:href="@{/role/form}">ajouter</a>
+    <div class="card">
+        <div class="card-block">
+    <table class="table table-striped">
+        <thead class="table-dark">
+          <tr>
+              <th>id</th>
+              <th>nom</th>
+              <th>description</th>
+              <th>operations</th>
+          </tr>
+        </thead>
+        <tbody>
+        <th:block>
+            <tr th:each="r: ${roleList}">
+                <td th:text="${r.id}"></td>
+                <td th:text="${r.nom}"></td>
+                <td th:text="${r.description}"></td>
+                <td>
+                    <a th:href="@{'/role/edit/' + ${r.id}}">edit</a> |
+                    <a th:href="@{'/role/delete/' + ${r.id}}">delete</a>
+                </td>
+            </tr>
+        </th:block>
+
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+
+
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<!--<script  type="text/javascript" th:src="@{/salle.js}"></script>-->
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>e-com</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css}"/>
+    <link th:rel="stylesheet" th:href="@{/myCss.css}">
+</head>
+<body style="background-color:#ccccb3">
+<div th:replace="common::commonnav"></div>
+<p></p>
+<div class="text-center">
+    <h3><big>[[${np}]]</big> </h3>
+</div>
+
+<div class="container">
+
+    <div class="row">
+        <th:block th:each="p: ${one}">
+            <div class="col-lg-6">
+                <a class="text-dark">   <img alt="" th:src="*{'data:photo/jpeg;base64,'+{p.photo}}" class="s-item"/>
+                    <p class="text-center">
+                        [[${p.nom}]]
+                    </p>
+                </a>
+            </div>
+            <div class="col-lg-6">
+                [[${p.description}]]
+            </div>
+        </th:block>
+</div>
+</div>
+
+
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<!--<script  type="text/javascript" th:src="@{/salle.js}"></script>-->
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+</body>
+</html>
