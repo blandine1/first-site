@@ -4,8 +4,7 @@
 <link rel="stylesheet" th:href="@{/myCss.css}">
 <body>
 
-<div th:fragment="commonnav" >
-
+<div th:fragment="commonnav">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
         <a class="navbar-brand" href="#">
             <marquee behavior="" direction="right-left">site</marquee></a>
@@ -18,33 +17,31 @@
                     <a class="nav-link" th:href="@{/}">Home</a>
                 </li>
                 <div>
-                    <li sec:authorize="hasAuthority('ADMIN')" class="nav-item dropdown" >
+                    <li sec:authorize="hasAuthority('ADMIN')" class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             formulaire
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" th:href="@{/categorie/form}">matieres</a>
                             <a class="dropdown-item" th:href="@{/produit/form}">produit</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
                         </div>
                     </li>
                 </div>
-
                 <div >
-                    <li sec:authorize="hasAuthority('ADMIN')" class="nav-item dropdown" >
+                    <li sec:authorize="hasAuthority('ADMIN')" class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             articles
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"  >
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" th:href="@{/categorie/list}">categorie</a>
                             <a class="dropdown-item" th:href="@{/produit/list}">produits</a>
                         </div>
                     </li>
                 </div>
                 <div>
-                    <li sec:authorize="hasAuthority('ADMIN')" class="nav-item dropdown" >
+                    <li sec:authorize="hasAuthority('ADMIN')" class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            5eme
+                            User
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" th:href="@{/user/form}">user</a>
@@ -52,9 +49,7 @@
                         </div>
                     </li>
                 </div>
-
-
-                <ul class="pull">
+                <ul class="navbar-nav ml-md-auto">
                     <li class="nav-item dropdown">
                         <a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">
                             <span class="profile-ava">
@@ -72,8 +67,6 @@
             </ul>
         </div>
     </nav>
-
 </div>
-
 </body>
 </html>

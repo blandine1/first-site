@@ -19,8 +19,8 @@ public class Categorie implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nom;
-    @Lob
-    @Column(columnDefinition = "MEDIUMBLOB")
+//    @Lob
+//    @Column(columnDefinition = "MEDIUMBLOB")
     private String photo;
     private String description;
 

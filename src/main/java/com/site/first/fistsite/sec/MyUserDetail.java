@@ -23,7 +23,7 @@ public class MyUserDetail implements UserDetails {
             authorities.add(new SimpleGrantedAuthority(role.getNom()));
         }
 
-        return null;
+        return authorities;
     }
 
     @Override

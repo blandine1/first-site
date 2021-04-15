@@ -19,8 +19,8 @@ public class Produit implements Serializable {
     private String nom;
     private long qte;
     private Double prix;
-    @Lob
-    @Column(columnDefinition = "MEDIUMBLOB")
+//    @Lob
+//    @Column(columnDefinition = "MEDIUMBLOB")
     private String photo;
     private String description;
 

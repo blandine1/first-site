@@ -22,15 +22,15 @@
             <div>
                 <div class="form-group">
                     <label class="control-label">nom</label>
-                    <input  class="form-control" type="text" name="pnom" required>
+                    <input  class="form-control" type="text" th:field="*{nom}" required />
                 </div>
                 <div class="form-group">
                     <label class="control-label">choisir une image</label>
-                    <input  class="form-control" type="file" name="file" required>
+                    <input  class="form-control" type="file" name="picture" required />
                 </div>
                 <div class="form-group">
                     <label class="control-label">description</label>
-                    <input  class="form-control" type="text" name="desc" required>
+                    <input  class="form-control" type="text" th:field="*{description}" required />
                 </div>
             </div>
             <div class="text-center">

@@ -5,16 +5,17 @@ import com.site.first.fistsite.DAO.ProduitRepository;
 import com.site.first.fistsite.entities.Categorie;
 import com.site.first.fistsite.entities.Produit;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
@@ -28,6 +29,9 @@ public class ProduitController {
     @Autowired
     private CategorieRepository categorieRepository ;
 
+    @Value("${dir.imageProd}")
+    private String imagePro;
+
     @GetMapping(value = "/produit/form")
     public  String showProduitForm(Model model){
         List<Categorie> categorieList=categorieRepository.findAll();
@@ -37,8 +41,8 @@ public class ProduitController {
         return "produit_form";
     }
 
-    @PostMapping(value = "/produit/save")
-    public String saveProduit(@RequestParam("file")MultipartFile file,
+   /* @PostMapping(value = "/produit/save")
+    public String saveP(@RequestParam("file")MultipartFile file,
                               @RequestParam("pnom")String nom,
                               @RequestParam("qte") Long qte,
                               @RequestParam("prix") Double prix,
@@ -60,15 +64,9 @@ public class ProduitController {
         produit.setPrix(prix);
         produit.setDescription(description);
         produit.setCategorie(categorie);
-
-
         produitRepository.save(produit);
-        System.out.println("//////  " +produit);
-
-
-
         return "rediret:/produit/list";
-    }
+    }*/
 
     @GetMapping(value = "/produit/list")
     public String getProduit(Model model){
@@ -78,13 +76,29 @@ public class ProduitController {
         return "produits";
     }
 
+
+    @PostMapping(value = "/produit/save")
+    public String saveProduit(@RequestParam("picture")MultipartFile file,
+                              Produit produit) throws IOException {
+
+        if (!(file.isEmpty())){
+            produit.setPhoto(file.getOriginalFilename());
+            produitRepository.save(produit);
+        }
+        if(!(file.isEmpty())){
+            produit.setPhoto(file.getOriginalFilename());
+            file.transferTo(new File(imagePro+produit.getId()));
+        }
+
+        return "redirect:/produit/list";
+    }
+
     @GetMapping(value = "/lystById/{id}")
     public String getProduitById(@PathVariable("id") Long id, Model model, String p){
         List<Produit>  listByCategorie = produitRepository.findByCategorie(id);
         model.addAttribute("listByCategorie",listByCategorie);
         String n = categorieRepository.findByCategorie(id);
         model.addAttribute("n",n);
-        //System.out.println("///////////////// " +n);
 
         return "produitSite";
     }
