@@ -27,8 +27,8 @@
     <div class="dis">
         <spam th:each="c: ${allCAtegories}">
             <a th:href="@{'/lystById/' +${c.id}}" class="text-dark img-circle">
-                <img th:src="@{'/getPhoto/'+${c.id}}" width="100" height="100"/>
-            <p class="text-center">
+                <img th:src="@{'/getPhoto/'+${c.id}}" width="125" height="129"/>
+            <p style="text-align: center">
               [[${c.nom}]]
             </p>
             </a>
