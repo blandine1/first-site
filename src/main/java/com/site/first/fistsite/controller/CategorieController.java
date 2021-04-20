@@ -80,7 +80,7 @@ public class CategorieController {
         return "categorie_form";
     }
 
-    @GetMapping(value = "")
+    @GetMapping(value = "/")
     public String getProduitsSite(Model model){
         List<Categorie> allCAtegories =categorieRepository.findAll();
         model.addAttribute("allCAtegories", allCAtegories);

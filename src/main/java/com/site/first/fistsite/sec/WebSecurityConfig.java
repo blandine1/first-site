@@ -43,16 +43,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.
                 authorizeRequests()
-                .antMatchers("/produit/**").hasAuthority("ADMIN")
-                .antMatchers("/categorie/**").hasAuthority("ADMIN")
-                .anyRequest()
-                .authenticated()
-                .and()
-                .formLogin()
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll();
+                .antMatchers("/").permitAll()
+                .antMatchers("/produit/**").permitAll()
+                .antMatchers("/categorie/**").permitAll();// hasAuthority("ADMIN")
+////                .and()
+////                .formLogin()
+////                .permitAll()
+////                .and()
+//                .logout()
+//                .permitAll();
 
     }
 }
