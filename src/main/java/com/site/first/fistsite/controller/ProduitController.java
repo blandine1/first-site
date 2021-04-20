@@ -4,18 +4,19 @@ import com.site.first.fistsite.DAO.CategorieRepository;
 import com.site.first.fistsite.DAO.ProduitRepository;
 import com.site.first.fistsite.entities.Categorie;
 import com.site.first.fistsite.entities.Produit;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
@@ -91,6 +92,14 @@ public class ProduitController {
         }
 
         return "redirect:/produit/list";
+    }
+
+    @GetMapping(value = "/getProduit/{id}", produces = MediaType.IMAGE_JPEG_VALUE)
+    @ResponseBody
+    public byte[] getPhotoProduit(@PathVariable("id") Long id) throws IOException {
+        File file= new File(imagePro+id);
+
+        return IOUtils.toByteArray(new FileInputStream(file));
     }
 
     @GetMapping(value = "/lystById/{id}")

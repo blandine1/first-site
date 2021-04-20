@@ -35,7 +35,9 @@
                 <td th:text="${p.nom}"></td>
                 <td th:text="${p.qte}"></td>
                 <td th:text="${p.prix}"></td>
-                <td><img alt="" th:src="*{'data:photo/jpeg;base64,'+{p.photo}}" style="height: 100px; width: 140px"></td>
+                <td>
+                    <img  th:src="@{'/getProduit/' +${p.id}}" class="grid-item"/>
+                </td>
                 <td>
                     <a th:href="@{'/categorie/edit/' + ${p.id}}">edit</a> |
                     <a th:href="@{'/categorie/delete/' + ${p.id}}">delete</a>

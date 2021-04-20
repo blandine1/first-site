@@ -27,6 +27,7 @@
                 <div class="form-group">
                     <label class="control-label">choisir une image</label>
                     <input  class="form-control" type="file" name="picture" required />
+                    <img th:src="@{'/getPhoto/'+${categorie.id}}" width="100" height="100"/>
                 </div>
                 <div class="form-group">
                     <label class="control-label">description</label>

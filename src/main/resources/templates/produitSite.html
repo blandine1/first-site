@@ -17,7 +17,8 @@
 <div class="container">
     <div class="dis">
         <spam th:each="p: ${listByCategorie}">
-            <a th:href="@{'/prodtById/' +${p.id}}" class="text-dark">   <img alt="" th:src="*{'data:photo/jpeg;base64,'+{p.photo}}" class="grid-item">
+            <a th:href="@{'/prodtById/' +${p.id}}" class="text-dark">
+                <img  th:src="@{'/getProduit/'+${p.id}}" class="grid-item"/>
             <p class="text-center">
               [[${p.nom}]]
             </p>

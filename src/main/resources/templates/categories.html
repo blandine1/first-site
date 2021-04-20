@@ -31,7 +31,9 @@
             <tr th:each="c: ${allCAtegories}">
                 <td th:text="${c.id}"></td>
                 <td th:text="${c.nom}"></td>
-                <td><img alt="" th:src="*{'data:photo/jpeg;base64,'+{c.photo}}" style="height: 100px; width: 140px"></td>
+                <td >
+                    <img th:src="@{'/getPhoto/'+${c.id}}" width="100" height="100"/>
+                </td>
                 <td>
                     <a th:href="@{'/categorie/edit/' + ${c.id}}">edit</a> |
                     <a th:href="@{'/categorie/delete/' + ${c.id}}">delete</a>
